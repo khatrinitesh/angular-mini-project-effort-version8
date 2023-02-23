@@ -1,2 +1,26 @@
-<p>parent works!</p>
-<app-child></app-child>
+
+<app-child [childMsg]="parentMsg" *ngFor="let box of boxCollection" [details]="box" (boxIdEmitter)="handleActiveClick($event)" [isActive]="box.name === activeElement" (boxNewClick)="btnButton($event)"></app-child>
+
+<div class="container">
+    <br />
+    <h1 class="text-center">{{title}}</h1>
+    <table class="table">
+        <thead>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Stock</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of products">
+                <td>{{p.id}}</td>
+                <td>{{p.title}}</td>
+                <td>{{p.price}}</td>
+                <td>{{p.stock}}</td>
+                <td>
+                    <app-stockstatus [productId]="p.id" [stock]='p.stock' (stockValueChange)='changeStockValue($event)'></app-stockstatus>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

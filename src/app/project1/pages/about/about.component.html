@@ -1,4 +1,44 @@
 <h2 class="headtitle">about works!</h2>
+<app-parent></app-parent>
+<input type="checkbox" [(ngModel)]="showMe"/>
+<br/>
+<div style="background-color: orange;" *ngIf="!showMe">This is Team A</div>
+<div *ngIf="!showMe;then thenBlock2  else elseBlock2"></div>
+<ng-template #thenBlock2>team a</ng-template>
+    <ng-template #elseBlock2>team b</ng-template>
+<hr/>
+<div *ngIf="!condition;then ExampleTwo;else ExampleThree">
+    This content is not shown
+</div>
+<ng-template #ExampleTwo>
+    <div>content to render when the condition is true</div>
+</ng-template>
+<ng-template #ExampleThree>
+    <div>content to render when the condition is false</div>
+</ng-template>
+<hr/>
+<div *ngIf="SlabOne; else SlabTwo">
+    content to render, when the condition is true 
+</div>
+<ng-template #SlabTwo>
+    content to render, when the condition is false 
+</ng-template>
+
+<hr/>
+
+<div *ngIf="divTemplateOne;else Resultfound">
+    nitesh khatri
+</div>
+
+<ng-template #Resultfound>
+    <div>Sameet khatri</div>
+</ng-template>
+<hr/>
+<button (click)="btnToggle()">{{contentDesc ? 'untoggle' : 'toggle'}}</button>
+<div *ngIf="!contentDesc; else elseBlock">Lorem Ipsum</div>
+<div><ng-template #elseBlock>no greeting.</ng-template></div>
+<hr/>
+
 <p *ngIf="!showelement">ShowElement</p>
 <div class="counter">
     <button (click)="increment()">increment</button>

@@ -18,3 +18,11 @@ export interface CTeam{
     age:number,
 }
 
+// https://www.geodev.me/blog/parent-child-communication-using-angular/
+export interface IBox{
+    id:number;
+    name:string;
+    desc:string;
+    title:string;
+    body:string;
+}

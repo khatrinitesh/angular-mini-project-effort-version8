@@ -1,1 +1,18 @@
-<p>child works!</p>
+Child Component is {{childMsg}}
+<br/>
+
+<div class="box" [ngClass]="isActive ? 'box--actve' : 'inactive'">
+    <h1>{{details.name}}</h1>
+    <p>{{details.desc}}</p>
+    <button class="box__button" (click)="handleClick(details.name)">Make active</button>
+</div>
+<br/>
+<div class="card">
+    <h3>{{details.title}}</h3>
+    <p>{{details.body}}</p>
+    <button class="box_button" (click)="btnClick(details.title)">Make Button active</button>
+</div>
+
+
+<hr/>
+<br/>

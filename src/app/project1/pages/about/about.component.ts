@@ -19,9 +19,17 @@ export class AboutComponent implements OnInit {
   public ItemsData: any = this.GetItemData();
   public WeatherData: any = this.GetWeatherData();
   public apiData:Array<Idata>=[];
+  public SlabOne:boolean=true;
+  public contentDesc:boolean=false;
+  public divTemplateOne:boolean=true;
+  public condition:boolean=true;
+  public showMe:boolean=true;
   // public response:Observable<Idata[]>;
   // public showasync:boolean;
-  // public show:boolean;
+
+  public btnToggle(){
+    this.contentDesc = !this.contentDesc
+  }
 
   public increment(){
     this.countdata++
