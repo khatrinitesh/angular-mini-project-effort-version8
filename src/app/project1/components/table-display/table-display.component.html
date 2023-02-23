@@ -1,0 +1,17 @@
+<div>
+    <table class="table">
+      <thead class="" style="background-color: lavender;">
+        <tr>
+          <th *ngFor="let header of headers">{{header}}</th>
+        </tr>
+      </thead>
+  
+      <tbody class="">
+        <tr *ngFor="let item of items">
+          <td *ngFor="let header of headers">
+            {{item[header]}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

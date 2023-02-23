@@ -1,0 +1,46 @@
+<h2 class="headtitle">about works!</h2>
+<p *ngIf="!showelement">ShowElement</p>
+<div class="counter">
+    <button (click)="increment()">increment</button>
+    <button (click)="decrement()">decrement</button>
+    <input type="text" [value]="countdata"/>
+    <p>{{countdata}}</p>
+</div>
+<hr/>
+<table border="1" cellpadding="10" cellspacing="10" >
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of apiData" align="center">
+            <td>
+                {{item.title}}
+            </td>
+            <td>
+                {{item.body}}
+            </td>
+            <td>
+                <button (click)="btnRemove()">&times;</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<hr/>
+<ul>
+    <li *ngFor="let per of PersonData">
+        {{per.name}} - {{per.email}}
+    </li>
+</ul>
+<hr/>
+<table-display [items]="CustomerData"></table-display>
+<table-display [items]="ItemsData"></table-display>
+<table-display [items]="WeatherData"></table-display>
+<hr/>
+<ul>
+    <li *ngFor="let tea of team">{{tea.name}} - {{tea.age}}</li>
+</ul>
+<hr/>
