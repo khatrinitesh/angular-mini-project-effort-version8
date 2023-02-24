@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {ServiceService} from '../../services/service.service';
-import { Person,CTeam ,Idata} from '../../components/idata';
+import { DemoService } from '../../services/demo.service';
+import { Person,CTeam ,Idata, Kafein,ExampleApi} from '../../components/idata';
 import { Observable } from 'rxjs';
-import { ThrowStmt, isNgTemplate } from '@angular/compiler';
+import { HttpClient } from "@angular/common/http";
+import { ApiserviceService } from '../../services/apiservice.service';
 
 @Component({
   selector: 'app-about',
@@ -19,17 +21,13 @@ export class AboutComponent implements OnInit {
   public ItemsData: any = this.GetItemData();
   public WeatherData: any = this.GetWeatherData();
   public apiData:Array<Idata>=[];
-  public SlabOne:boolean=true;
-  public contentDesc:boolean=false;
-  public divTemplateOne:boolean=true;
-  public condition:boolean=true;
-  public showMe:boolean=true;
+  public apiDataTwo:Array<ExampleApi>=[];
+  public users: any;
+  public httpData:any;
+  public url = 'https://jsonplaceholder.typicode.com/todos'
   // public response:Observable<Idata[]>;
   // public showasync:boolean;
-
-  public btnToggle(){
-    this.contentDesc = !this.contentDesc
-  }
+  // public show:boolean;
 
   public increment(){
     this.countdata++
@@ -108,16 +106,23 @@ export class AboutComponent implements OnInit {
     ];
   }
 
-  constructor(private _apiserv:ServiceService) {
+  constructor(private _apiserv:ServiceService,private demoserv:DemoService,private httpc:HttpClient,private _apiservtwo:ApiserviceService) {
     // console.log('constructor: logging starting...');
     // this.interval= setInterval(() => {
     //   console.log(this.count++)
     // },500)
     // this.onAsync();
    this.onSubscribe();
+   this.onSubscribeTwo();
    }
 
 
+
+   onSubscribeTwo(){
+    this._apiservtwo.getData().subscribe(data => {
+      this.apiDataTwo = data;
+    })
+   }
    onSubscribe(){
     this._apiserv.getdata().subscribe(data => {
       this.apiData = data;
@@ -171,7 +176,18 @@ export class AboutComponent implements OnInit {
 
 
   ngOnInit() {
-    
+    this.demoserv.get('users?page=1').subscribe(res => {
+      this.users = res;
+      console.log('data response',this.users);
+    })
+    this.callApi();
+  }
+
+
+  callApi(){
+    this.httpc.get<Kafein[]>(this.url).subscribe(data => {
+      this.httpData = data;
+    })
   }
 
 }

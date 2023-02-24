@@ -18,11 +18,17 @@ export interface CTeam{
     age:number,
 }
 
-// https://www.geodev.me/blog/parent-child-communication-using-angular/
-export interface IBox{
-    id:number;
+export interface Kafein{
     name:string;
-    desc:string;
+    address:string;
+}
+
+export interface ExampleApi{
     title:string;
     body:string;
+}
+
+export interface Group{
+    cubicleId:string;
+    name:string;
 }

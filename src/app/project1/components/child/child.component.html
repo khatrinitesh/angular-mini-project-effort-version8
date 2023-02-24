@@ -1,18 +1,20 @@
-Child Component is {{childMsg}}
-<br/>
-
-<div class="box" [ngClass]="isActive ? 'box--actve' : 'inactive'">
-    <h1>{{details.name}}</h1>
-    <p>{{details.desc}}</p>
-    <button class="box__button" (click)="handleClick(details.name)">Make active</button>
-</div>
-<br/>
-<div class="card">
-    <h3>{{details.title}}</h3>
-    <p>{{details.body}}</p>
-    <button class="box_button" (click)="btnClick(details.title)">Make Button active</button>
-</div>
-
+<p>child works!</p>
+{{childMessage}}
+<button (click)="sendMessage()">Send msg</button>
 
 <hr/>
-<br/>
+<h4>from child: {{dropdownItems}}</h4>
+
+<hr/>
+
+<h2>Child Component</h2>
+<input type="text" (keyup)="onChange(price.value)" #price/>
+
+<hr/>
+
+<h3>{{title}}</h3>
+<button (click)="fireEvent($event)">Send Event</button>
+
+<hr/>
+<div>Name: {{currentPerson?.name}}</div>
+<div>Cubicle: {{currentPerson.cubicleId}}</div>

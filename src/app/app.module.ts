@@ -19,7 +19,6 @@ import { BannerComponent } from './project1/components/banner/banner.component';
 import { ChildComponent } from './project1/components/child/child.component';
 import { ParentComponent } from './project1/components/parent/parent.component';
 import { TableDisplayComponent } from './project1/components/table-display/table-display.component';
-import { StockstatusComponent } from './project1/components/stockstatus/stockstatus.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +33,7 @@ import { StockstatusComponent } from './project1/components/stockstatus/stocksta
     BannerComponent,
     ChildComponent,
     ParentComponent,
-    TableDisplayComponent,
-    StockstatusComponent
+    TableDisplayComponent
   ],
   imports: [
     BrowserModule,
