@@ -19,6 +19,10 @@ import { BannerComponent } from './project1/components/banner/banner.component';
 import { ChildComponent } from './project1/components/child/child.component';
 import { ParentComponent } from './project1/components/parent/parent.component';
 import { TableDisplayComponent } from './project1/components/table-display/table-display.component';
+import { VoterComponent } from './project1/components/voter/voter.component';
+import { CountdowntimerComponent } from './project1/components/countdowntimer/countdowntimer.component';
+import { ItemOutputComponent } from './project1/components/item-output/item-output.component';
+import { DateformatPipe } from './project1/pipe/dateformat.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { TableDisplayComponent } from './project1/components/table-display/table
     BannerComponent,
     ChildComponent,
     ParentComponent,
-    TableDisplayComponent
+    TableDisplayComponent,
+    VoterComponent,
+    CountdowntimerComponent,
+    ItemOutputComponent,
+    DateformatPipe,
   ],
   imports: [
     BrowserModule,

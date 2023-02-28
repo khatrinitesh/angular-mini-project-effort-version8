@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  public major:number=1;
+  public minor:number=23;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  newMinor(){
+    this.minor--
+  }
+  newMajor(){
+    this.major++
   }
 
 }

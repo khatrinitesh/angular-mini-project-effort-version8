@@ -1,4 +1,105 @@
-<h2 class="headtitle">about works!</h2>
+<h2 class="headtitle">{{headtitle | lowercase}}</h2>
+<div *ngFor="let d of ds">
+    <h2>{{d.name}}</h2>
+    <p>{{d.username}}</p>
+    <p>{{d.email}}</p>
+    <button (click)="btnRemovee(i)">&times;</button>
+</div>
+<hr/>
+<div>
+    <li *ngFor="let post of posts">
+         <a  href="{{post.path}}" target="_blank">  
+             <span  style="font-size: 20px;text-align: center;">{{post.title}}                 
+              </span>
+        </a>
+    </li>
+</div>
+<hr/>
+<p>
+    I turned the corner
+    <ng-container *ngIf="herotwo">
+      and saw {{herotwo.name}}. I waved
+    </ng-container>and continued on my way.
+  </p>
+<p>{{birthday | date:'dd-MMM-yyyy'}}</p>
+<nav [style]='navStyle'>
+    <a [style.text-decoration]="activeLinkStyle">Home Page</a>
+    <a [style.text-decoration]="linkStyle">Login</a>
+  </nav>`
+<button type="button" [disabled]="isUnchanged">Disabled Button</button>
+<hr/>
+<table>
+    <tr [attr.rowspan]="2">
+        <td [attr.colspan]="1+2">Three four</td>
+        <td [attr.colspan]="1+2">Three four</td>
+        <td [attr.colspan]="1+2">Three four</td>
+        <td [attr.colspan]="1+2">Three four</td>
+    </tr>
+    <tr>
+        <td [attr.colspan]="1+2">Three 11</td>
+        <td [attr.colspan]="1+2">Three 111</td>
+        <td [attr.colspan]="1+2">Three 1111</td>
+    </tr>
+</table>
+<img alt="item" [src]="itemImageUrl">
+<hr/>
+<h1>Hello, {{customer}}</h1>
+<ul>
+<!-- Ebony and Chiho in a list-->
+<li *ngFor="let customer of customers">{{ customer.value }}</li>
+</ul>
+<hr/>
+{{currentCustomer}}
+<div><img alt="item" src="{{itemImageUrl}}"></div>
+<app-item-output (newItemEvent)="addItem($event)"></app-item-output>
+<ul>
+    <li *ngFor="let item of items">{{item}}</li>
+</ul>
+<hr/>
+<h3>Countdown to Liftoff (via local variable)</h3>
+<button type="button" (click)="timer.start()">Start</button>
+<button type="button" (click)="timer.stop()">Stop</button>
+<div class="seconds">{{timer.seconds}}</div>
+<app-countdowntimer #timer></app-countdowntimer>
+<hr/>
+<h3>Agree: {{agreed}}, Disagree: {{disagreed}}</h3>
+<app-voter (voted)="onVoted($event)" [name]="voter" *ngFor="let voter of voters"></app-voter>
+<hr/>
+<h3>Version {{major}}.{{minor}}</h3>
+<h4>Change log:</h4>
+
+<ul>
+    <li *ngFor="let change of changeLog">{{change}}</li>
+</ul>
+<input type="text" [(ngModel)]="hero"/>
+{{hero}}
+<hr/>
+<span>{{amount | currency:'INR'}} </span>
+  <hr/>
+
+<button (click)="onLogMe()">Logger count</button>
+<button type="button" (click)="onEditClick()">{{canEdit ? true : false}}</button>
+<br/>
+<div *ngIf="canEdit; else noEdit">
+    <p>You can edit the following paragraph.</p>
+</div>
+<ng-template #noEdit>
+    <p>The following paragraph is read only. Try clicking the button!</p>
+</ng-template>
+<p>{{this.canEdit}}</p>
+<hr/>
+<p [id]="sayHelloId">This is paragraph.</p>
+<button [style.color]="fontColor"
+  type="button"
+  [disabled]="canClick"
+  (click)="sayMessage()">
+  Trigger alert message
+</button>
+{{count}}
+<button (click)="btninc()">+</button>
+<button (click)="btndec()">-</button>
+<button (click)="btnreset()">reset</button>
+
 <ul>
     <li *ngFor="let result of apiDataTwo">
         <h3>{{result.title}}</h3>
