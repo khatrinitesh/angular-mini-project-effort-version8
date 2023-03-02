@@ -1,0 +1,22 @@
+declare var DropDownsUtil: {
+    caretIndex: (element: HTMLElement) => number | void;
+    caretSelection: (element: HTMLElement, startIndex: number, endIndex?: number) => void;
+    endOfWordIndex: (text: string, startIndex: number, separator?: string) => number;
+    selectEndOfWord: (element: HTMLElement, startIndex: number, separator?: string) => void;
+    moveToEndOfWord: (element: HTMLElement, caretIdx: number, separator?: string) => number;
+    hasSelection: (element: HTMLElement) => boolean;
+    getExtraHeight: (element: HTMLElement) => number;
+    resizeList: (list: HTMLElement, listContainer: HTMLElement, height: number) => void;
+    indexOfWordAtCaret: (caretIdx: number, text: string, separator?: string) => number;
+    trim: (word: string, separator?: string) => string;
+    wordAtCaret: (caretIdx: number, text: string, separator?: string) => string;
+    replaceWordAtCaret: (caretIdx: number, text: string, word: string, separator?: string) => string;
+    textReduced: (newValue?: string, oldValue?: string ) => boolean;
+    resolveValue: (props: Object) => Object;
+    sameCharsOnly: (word: string, character: string) => boolean;
+    normalizeIndex: (index: number, length: number) => number;
+    shuffleData: (data: Array<any>, splitIndex: number, defaultItem?: any) => Array<any>;
+    matchText: (text?: string, word?: string, ignoreCase?: boolean) => boolean | number;
+    getter: (dataItem: any, field?: string) => string | void;
+};
+export default DropDownsUtil;

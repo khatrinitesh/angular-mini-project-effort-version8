@@ -1,9 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 // => PROJECT 1
 // PAGES
@@ -23,6 +26,7 @@ import { VoterComponent } from './project1/components/voter/voter.component';
 import { CountdowntimerComponent } from './project1/components/countdowntimer/countdowntimer.component';
 import { ItemOutputComponent } from './project1/components/item-output/item-output.component';
 import { DateformatPipe } from './project1/pipe/dateformat.pipe';
+import { ConfiguratorComponent } from './project1/components/configurator/configurator.component';
 
 @NgModule({
   declarations: [
@@ -42,12 +46,15 @@ import { DateformatPipe } from './project1/pipe/dateformat.pipe';
     CountdowntimerComponent,
     ItemOutputComponent,
     DateformatPipe,
+    ConfiguratorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

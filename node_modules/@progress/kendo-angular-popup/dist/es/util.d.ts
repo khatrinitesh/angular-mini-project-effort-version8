@@ -1,0 +1,12 @@
+import { ElementRect, OffsetPosition } from '@progress/kendo-popup-common';
+declare const eitherRect: (rect: ElementRect, offset: OffsetPosition) => ElementRect;
+declare const replaceOffset: (rect: ElementRect, offset: OffsetPosition) => ElementRect;
+declare const removeStackingOffset: (rect: ElementRect, stackingOffset: ElementRect) => ElementRect;
+declare const isDifferentOffset: (oldOffset: OffsetPosition, newOffset: OffsetPosition) => boolean;
+declare const isDocumentAvailable: () => boolean;
+declare const isWindowAvailable: () => boolean;
+declare const hasBoundingRect: (elem: HTMLElement) => boolean;
+declare const scrollableParents: (element: HTMLElement) => HTMLElement[];
+declare const FRAME_DURATION: number;
+declare const HAS_RELATIVE_STACKING_CONTEXT: boolean;
+export { eitherRect, FRAME_DURATION, hasBoundingRect, isDifferentOffset, isDocumentAvailable, isWindowAvailable, replaceOffset, removeStackingOffset, HAS_RELATIVE_STACKING_CONTEXT, scrollableParents };

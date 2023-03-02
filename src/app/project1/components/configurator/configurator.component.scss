@@ -1,0 +1,17 @@
+.configurator {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    margin: 0 0 20px;
+    padding: 20px;
+  }
+
+  .configurator kendo-label {
+    text-align: center;
+    display: inline-grid;
+  }
+
+  .configurator .k-label {
+    color: #a1a1a1;
+  }

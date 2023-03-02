@@ -10,6 +10,8 @@ import { CountdowntimerComponent } from '../../components/countdowntimer/countdo
 import { DateformatPipe } from '../../pipe/dateformat.pipe';
 import { HttpserviceService } from '../../services/httpservice.service';
 import { HttpservicetwoService } from '../../services/httpservicetwo.service';
+import { IOption } from '../../interface/models';
+
 
 @Component({
   selector: 'app-about',
@@ -31,13 +33,18 @@ export class AboutComponent implements OnInit {
   public users: any;
   public httpData:any;
   public fontColor = 'blue';
-  public  sayHelloId = 1;
+  public sayHelloId = 1;
   public headtitle :string='About works'
   public canClick:boolean=false;
   public url = 'https://jsonplaceholder.typicode.com/todos'
   public canEdit:boolean=true;
   public message:string='';
   public ds:any;
+
+
+  public changeHandler({ optionType, optionValue }: IOption): void {
+    this[optionType] = optionValue;
+  }
   
   @Input() major = 0;
   @Input() minor = 0;

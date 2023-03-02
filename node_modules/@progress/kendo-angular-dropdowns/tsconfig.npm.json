@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "commonjs",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "noImplicitAny": false,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "outDir": "dist/npm",
+    "types": []
+  },
+  "files": [
+    "src/main.ts",
+    "typings/index.d.ts"
+  ],
+  "filesGlob": [
+    "src/*.ts",
+    "!./node_modules/**/*.ts"
+  ],
+  "ignoreDiagnostics": [
+    2403,
+    2300,
+    2374,
+    2375
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "angularCompilerOptions": {
+    "skipTemplateCodegen": false
+  }
+}
