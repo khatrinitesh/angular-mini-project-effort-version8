@@ -27,6 +27,10 @@ import { CountdowntimerComponent } from './project1/components/countdowntimer/co
 import { ItemOutputComponent } from './project1/components/item-output/item-output.component';
 import { DateformatPipe } from './project1/pipe/dateformat.pipe';
 import { ConfiguratorComponent } from './project1/components/configurator/configurator.component';
+import { Sibling1Component } from './project1/components/sibling1/sibling1.component';
+import { Sibling2Component } from './project1/components/sibling2/sibling2.component';
+import { SearchComponent } from './project1/components/search/search.component';
+import { TableComponent } from './project1/components/table/table.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +51,10 @@ import { ConfiguratorComponent } from './project1/components/configurator/config
     ItemOutputComponent,
     DateformatPipe,
     ConfiguratorComponent,
+    Sibling1Component,
+    Sibling2Component,
+    SearchComponent,
+    TableComponent,
   ],
   imports: [
     BrowserModule,

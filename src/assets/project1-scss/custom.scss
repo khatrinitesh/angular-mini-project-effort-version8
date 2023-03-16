@@ -61,10 +61,10 @@ table tr th{
 }
 
 table tr:nth-child(even) td{
-    background-color: orange;
+    background-color: lightblue;
 }
 table tr:nth-child(odd) td{
-    background-color: yellow;
+    background-color: lightgrey;
 }
 
 // BELOW CODE FOR FOOTER

@@ -19,6 +19,9 @@ import { IOption } from '../../interface/models';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
+  API: string = 'https://jsonplaceholder.typicode.com/posts';
+  data: any;
+  newdata:any;
   public hero:string=''
   public amount:number = 122
   public count:number = 0;
@@ -167,6 +170,10 @@ export class AboutComponent implements OnInit {
     this.apiData.splice(index, 1);
     // this.apiData = this.apiData.filter(item => item !== index)
   }
+  btnRemoveNew(index){
+    this.newdata.splice(index, 1);
+    // this.apiData = this.apiData.filter(item => item !== index)
+  }
 
   public GetCustomerData() {
     return [
@@ -229,6 +236,9 @@ export class AboutComponent implements OnInit {
     ];
   }
 
+  public results: any;
+  height;
+
   constructor(private _apiserv:ServiceService,private demoserv:DemoService,private httpc:HttpClient,private _apiservtwo:ApiserviceService,private loggerserv:LoggerService,private httpcc:HttpserviceService,private httpc2:HttpservicetwoService) {
     // console.log('constructor: logging starting...');
     // this.interval= setInterval(() => {
@@ -252,6 +262,8 @@ export class AboutComponent implements OnInit {
       this.ds = data;
     })
    }
+
+
 
    onSubscribeThree(){
     this.httpcc.getPosts().subscribe(data => {
@@ -302,6 +314,8 @@ export class AboutComponent implements OnInit {
       age:27
     },
   ]
+
+  keyword = "";
   public PersonData :Person[] = [
     {
       name:'nitesh',
@@ -320,19 +334,48 @@ export class AboutComponent implements OnInit {
     },
   ]
 
+  send(keyword){
+    this.keyword = keyword;
+  }
+
 
   ngOnInit() {
+    this.httpc.get(this.API).subscribe((res) => {
+      this.newdata = res;
+      console.log(res);
+    },err => {
+      alert(err)
+    })
     this.demoserv.get('users?page=1').subscribe(res => {
       this.users = res;
       console.log('data response',this.users);
     })
     this.callApi();
+    this.getApiResponse();
+    this.height = 0;
+    this.data = [];
   }
+
+  getApiResponse(){
+    this.httpc.get('https://jsonplaceholder.typicode.com/posts').subscribe((response) =>{
+      this.results = response;
+    })
+  }
+
+  mergeData(data){
+    // Convert the string to array of strings
+    this.data = data.split(",");
+  }
+  mergeHeight(height){
+    this.height = height;
+  }
+
 
 
   callApi(){
     this.httpc.get<Kafein[]>(this.url).subscribe(data => {
       this.httpData = data;
+      console.log(data);
     })
   }
 
