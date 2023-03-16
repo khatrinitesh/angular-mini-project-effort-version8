@@ -1,3 +1,8 @@
+// RANDOMNUMBER 
+export interface RandomNum {
+    number:number;
+}
+
 // IData
 export interface Idata {
     userId:number;

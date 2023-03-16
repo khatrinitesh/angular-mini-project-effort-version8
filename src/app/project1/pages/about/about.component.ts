@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output ,OnChanges, SimpleChanges,ViewChild } from '@angular/core';
 import {ServiceService} from '../../services/service.service';
 import { DemoService } from '../../services/demo.service';
-import { Person,CTeam ,Idata, Kafein,ExampleApi} from '../../components/idata';
+import { Person,CTeam ,Idata, Kafein,ExampleApi,RandomNum} from '../../components/idata';
 import { Observable } from 'rxjs';
 import { HttpClient } from "@angular/common/http";
 import { ApiserviceService } from '../../services/apiservice.service';
@@ -11,6 +11,8 @@ import { DateformatPipe } from '../../pipe/dateformat.pipe';
 import { HttpserviceService } from '../../services/httpservice.service';
 import { HttpservicetwoService } from '../../services/httpservicetwo.service';
 import { IOption } from '../../interface/models';
+import { FormGroup, FormControl, Validators, FormBuilder ,} from '@angular/forms'
+
 
 
 @Component({
@@ -22,6 +24,7 @@ export class AboutComponent implements OnInit {
   API: string = 'https://jsonplaceholder.typicode.com/posts';
   data: any;
   newdata:any;
+  public num:number=0;
   public hero:string=''
   public amount:number = 122
   public count:number = 0;
@@ -43,6 +46,47 @@ export class AboutComponent implements OnInit {
   public canEdit:boolean=true;
   public message:string='';
   public ds:any;
+  public text: string = "Hello";
+  public caption: string = "Click Me!";
+  public fullName: string = 'Robert Junior';  
+  // public randomNums:number[] = [3, 6, 7, 8, 1, 122, 44, 67, 790];
+
+  public randomNums:RandomNum[]=[
+    {
+      number:1
+    },
+    {
+      number:2
+    },
+    {
+      number:3
+    },
+    {
+      number:4
+    },
+    {
+      number:5
+    },
+  ]
+
+  
+
+  public stringValue:string='abc'
+  public numberValue:number=33
+  public accountObject: any;
+
+  getEmployees(event){
+    this.accountObject = event; //here you will get the employees from child
+  }
+
+
+  myStyles = {
+    'background-color': 'lime',
+    'font-size': '20px',
+    'font-weight': 'bold'
+    }
+
+    public itemImageUrl:string ='https://external-preview.redd.it/AzRt1kjJiRGIMW3240jikM3Dda4qIRjzl_032tC9urk.jpg?auto=webp&s=49315b7fc0a38ee974950f99279c7457fb26bd10'
 
 
   public changeHandler({ optionType, optionValue }: IOption): void {
@@ -51,6 +95,7 @@ export class AboutComponent implements OnInit {
   
   @Input() major = 0;
   @Input() minor = 0;
+  @Input() employees: any;
   changeLog:string[]=[];
   // public response:Observable<Idata[]>;
   // public showasync:boolean;
@@ -59,10 +104,11 @@ export class AboutComponent implements OnInit {
   @Output() change: EventEmitter<number> = new EventEmitter<number>();
   public agreed:number = 0;
   public disagreed:number = 0;
+  public isdiabled:boolean=true;
   public voters = ['Dr. IQ', 'Celeritas', 'Bombasto'];
   public items = ['item1', 'item2', 'item3', 'item4'];
   public currentCustomer:string = 'Maria';
-  public itemImageUrl:string  = 'https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg'
+  // public itemImageUrlw:string  = 'https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg'
   public customer:string='Bala'
   public isUnchanged:boolean = false;
   public  birthday = new Date(2011, 3, 10); 
@@ -72,6 +118,10 @@ export class AboutComponent implements OnInit {
   navStyle = 'font-size:1.2rem;color:cornflowerblue';
   linkStyle = 'underline'
   activeLinkStyle = 'overline';
+
+  getCurrentTime():any{
+    return Date.now();
+  }
 
   public  customers = [
     {value: 'Ebony'}, 
@@ -239,7 +289,7 @@ export class AboutComponent implements OnInit {
   public results: any;
   height;
 
-  constructor(private _apiserv:ServiceService,private demoserv:DemoService,private httpc:HttpClient,private _apiservtwo:ApiserviceService,private loggerserv:LoggerService,private httpcc:HttpserviceService,private httpc2:HttpservicetwoService) {
+  constructor(private _apiserv:ServiceService,private demoserv:DemoService,private httpc:HttpClient,private _apiservtwo:ApiserviceService,private loggerserv:LoggerService,private httpcc:HttpserviceService,private httpc2:HttpservicetwoService,private formBuilder:FormBuilder) {
     // console.log('constructor: logging starting...');
     // this.interval= setInterval(() => {
     //   console.log(this.count++)
@@ -250,6 +300,25 @@ export class AboutComponent implements OnInit {
    this.onSubscribeThree();
    this.onSubscribeFour();
    }
+
+   reactiveForm = new FormGroup({
+    firstname: new FormControl('', [Validators.required]),
+    lastname: new FormControl(''),
+    email: new FormControl(''),
+    address: new FormGroup({
+      address: new FormControl(''),
+      city: new FormControl(''),
+      state: new FormControl(''),
+    })
+  })
+
+   form:FormGroup = this.formBuilder.group({
+    firstName:'',
+    lastName:'',
+    zip:'',
+      street:'',
+      city:''
+   })
 
 
    onLogMe(){
@@ -315,6 +384,8 @@ export class AboutComponent implements OnInit {
     },
   ]
 
+  public parentMessage : string;
+
   keyword = "";
   public PersonData :Person[] = [
     {
@@ -340,6 +411,8 @@ export class AboutComponent implements OnInit {
 
 
   ngOnInit() {
+    this.parentMessage = 'this is parent compoen nt'
+    console.log(this.employees);
     this.httpc.get(this.API).subscribe((res) => {
       this.newdata = res;
       console.log(res);

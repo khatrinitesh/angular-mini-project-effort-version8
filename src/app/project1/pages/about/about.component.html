@@ -1,8 +1,57 @@
 <h2 class="headtitle">{{headtitle | lowercase}}</h2>
+
+ 
+
+  
+<h2>Complex form with address component</h2>
+<form [formGroup]="form">
+  <div>
+    <label>Firstname:</label>
+    <input type="text" name="firstName" formControlName="firstName">
+  </div>
+  <div>
+    <label>Lastname:</label>
+    <input type="text" name="lastName"  formControlName="lastName">
+  </div>
+  <div>
+    <label>zip:</label>
+    <input type="text" name="lastName"  formControlName="zip">
+  </div>
+  <div>
+    <label>street:</label>
+    <input type="text" name="lastName"  formControlName="street">
+  </div>
+  <div>
+    <label>city:</label>
+    <input type="text" name="lastName"  formControlName="city">
+  </div>
+</form>
+
+<p>{{form.value.firstName}}</p>
+<p>{{form.value.lastName}}</p>
+<p>{{form.value.zip}}</p>
+<p>{{form.value.street}}</p>
+<p>{{form.value.city}}</p>
+{{parentMessage}}
+<app-customer [name]="stringValue" [age]="numberValue" [account]="accountObject"></app-customer>
+<div><img src="{{itemImageUrl}}"></div>
+<button [disabled]='isdiabled'>Disable me</button>  
+<p [ngStyle]="myStyles">{{fullName}}</p>
+<ul>
+    <li *ngFor="let rndNum of randomNums">{{rndNum.number}}</li>
+</ul>
+<p [ngStyle]="myStyles">{{getCurrentTime()}}</p>
+<p>{{caption}}</p>
+<p>{{text}}</p>
+<p>2 +2 = {{2 + 2}}</p>
+<p>2 * 3 = {{2 * 3}}</p>
+<p>{{"2 + 2 != "+ 2 + 2}}</p>
+<p>{{"2 + 2 = " + (2+2)}}</p>
+<app-example1></app-example1>
 <div *ngFor="let nd of newdata">
     <h3>{{nd.title}}</h3>
     <p>{{nd.body}}</p>
-    <button (click)="btnRemoveNew(i)">&times;</button>
+    <button class="btn btn-" (click)="btnRemoveNew(i)">&times;</button>
 </div>
 
 

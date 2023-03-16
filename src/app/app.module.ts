@@ -31,6 +31,9 @@ import { Sibling1Component } from './project1/components/sibling1/sibling1.compo
 import { Sibling2Component } from './project1/components/sibling2/sibling2.component';
 import { SearchComponent } from './project1/components/search/search.component';
 import { TableComponent } from './project1/components/table/table.component';
+import { Example1Component } from './project1/components/example1/example1.component';
+import { CustomerComponent } from './project1/components/customer/customer.component';
+import { AddressComponent } from './project1/components/address/address.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +58,9 @@ import { TableComponent } from './project1/components/table/table.component';
     Sibling2Component,
     SearchComponent,
     TableComponent,
+    Example1Component,
+    CustomerComponent,
+    AddressComponent,
   ],
   imports: [
     BrowserModule,
