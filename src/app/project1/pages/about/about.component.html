@@ -1,6 +1,18 @@
-<h2 class="headtitle">{{headtitle | lowercase}}</h2>
+<h2 class="headtitle">{{headtitle | uppercase}}</h2>
 
- 
+<div class="lessons-list" *ngIf="lessons else loading">
+    lessons
+  </div>
+  
+  <ng-template #loading>
+      <div>Loading...</div>
+  </ng-template>
+ <div>
+    <button class="tab-button" 
+            (click)="login()">{{loginText}}</button>
+    <button class="tab-button" 
+            (click)="signUp()">{{signUpText}}</button>
+</div>
 
   
 <h2>Complex form with address component</h2>

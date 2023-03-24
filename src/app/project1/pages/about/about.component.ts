@@ -12,6 +12,7 @@ import { HttpserviceService } from '../../services/httpservice.service';
 import { HttpservicetwoService } from '../../services/httpservicetwo.service';
 import { IOption } from '../../interface/models';
 import { FormGroup, FormControl, Validators, FormBuilder ,} from '@angular/forms'
+import { ApiService } from '../../services/api.service';
 
 
 
@@ -69,6 +70,18 @@ export class AboutComponent implements OnInit {
     },
   ]
 
+
+  public loginText = 'Login';
+  public  signUpText = 'Sign Up'; 
+  public  lessons = ['Lesson 1', 'Lessons 2'];
+
+    login() {
+        console.log('Login');
+    }
+
+    signUp() {
+        console.log('Sign Up');
+    }
   
 
   public stringValue:string='abc'
@@ -288,8 +301,9 @@ export class AboutComponent implements OnInit {
 
   public results: any;
   height;
+  public smartphone:any[];
 
-  constructor(private _apiserv:ServiceService,private demoserv:DemoService,private httpc:HttpClient,private _apiservtwo:ApiserviceService,private loggerserv:LoggerService,private httpcc:HttpserviceService,private httpc2:HttpservicetwoService,private formBuilder:FormBuilder) {
+  constructor(private _apiserv:ServiceService,private demoserv:DemoService,private httpc:HttpClient,private _apiservtwo:ApiserviceService,private loggerserv:LoggerService,private httpcc:HttpserviceService,private httpc2:HttpservicetwoService,private formBuilder:FormBuilder,private apiTwoServ: ApiService) {
     // console.log('constructor: logging starting...');
     // this.interval= setInterval(() => {
     //   console.log(this.count++)
@@ -301,6 +315,20 @@ export class AboutComponent implements OnInit {
    this.onSubscribeFour();
    }
 
+   getSmartphones() {
+    this.api.getSmartphone()
+    .subscribe(resp => {
+      console.log(resp);
+      const keys = resp.headers.keys();
+      this.headers = keys.map(key =>
+        `${key}: ${resp.headers.get(key)}`);
+  
+      for (const data of resp.body) {
+        this.smartphone.push(data);
+      }
+      console.log(this.smartphone);
+    });
+  }
    reactiveForm = new FormGroup({
     firstname: new FormControl('', [Validators.required]),
     lastname: new FormControl(''),
