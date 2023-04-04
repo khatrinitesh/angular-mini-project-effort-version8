@@ -1,4 +1,78 @@
 <h2 class="headtitle">{{headtitle | uppercase}}</h2>
+<ul *ngFor="let datanew of groupCountry">
+    <li>{{datanew.country}}
+        <ul *ngFor="let datanew1 of datanew.people">
+            <li>{{datanew1.name}}</li>
+        </ul>
+    </li>
+</ul>
+<ul *ngFor="let group of peopleByCountry">
+    <li>
+        {{group.country}}
+        <ul>
+            <li *ngFor="let person of group.people">
+                {{person.name}}
+            </li>
+        </ul>
+    </li>
+</ul>
+<ul *ngFor="let data of people;let i =index;">
+    {{i+1}} - {{data.name}}
+</ul>
+<div *ngFor="let fetch of fetchData">
+    {{fetch.title}} - {{fetch.description}} - {{fetch.tagline}} - {{fetch.date}}
+</div>
+<input type=”text” [(ngModel)]='name' />
+<h2>{{name}}</h2>
+<hr/>
+<img [src]="imageUrl"/>
+<button (click)="show()">nsdsadadssadd</button>
+<div *ngIf="example else template2">
+    Nitesh khatri
+</div>
+<ng-template #template2>
+    <span>This text is rendered because it resides in a template that's invoked.</span>
+    <br/>
+    <button class="tab-button" (click)="logintt()">{{LoginText}}</button>
+    <button class="tab-button" (click)="signup()">{{SignUpText}}</button>
+</ng-template>
+<!-- <ng-template #template2>This is no result</ng-template> -->
+
+<hr/>
+<input type="radio" name="radio" (click)="Example='one'"/>
+One
+<input type="radio" name="radio" (click)="Example='two'"/>
+Two
+<input type="radio" name="radio" (click)="Example='three'"/>
+Three 
+<div [ngSwitch]="Example">
+    <ng-template [ngSwitchCase]="'one'">one</ng-template>
+    <ng-template [ngSwitchCase]="'two'">two</ng-template>
+    <ng-template [ngSwitchCase]="'three'">three</ng-template>
+    <ng-template ngSwitchDefault>otherwise</ng-template>
+</div>
+<hr/>
+<ul>
+<li [class.active]="viewMode==='map'" (click)="viewMode ='map'">Map</li>
+<li [class.active]="viewMode==='list'" (click)="viewMode ='list'">List</li>
+</ul>
+<div [ngSwitch]="viewMode">
+    <div *ngSwitchCase="'map'">Map</div>
+    <div *ngSwitchCase="'list'">List</div>
+</div>
+<hr/>
+{{unreadMessages}}
+
+<input type="text" [(ngModel)]="nameexample"/>
+{{nameexample}}
+<button (click)="btnClear()">Clear</button>
+<p>json pipe: {{itemsnew | json}}</p>
+{{max}}
+<p>100x80 = {{100*80}}</p>
+<p>Largest: {{max(100, 200)}}</p>
+<p>Welcome {{getFName()}}, {{getLName()}}</p>
+<p>{{ 'Hello & Welcome to '+ ' Angular Interpolation '}}</p>
+{{getTitle()}}
 
 <div class="lessons-list" *ngIf="lessons else loading">
     lessons

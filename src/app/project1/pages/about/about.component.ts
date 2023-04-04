@@ -22,9 +22,18 @@ import { ApiService } from '../../services/api.service';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
+  // global
   API: string = 'https://jsonplaceholder.typicode.com/posts';
+
+  public nameexample:string='';
+  
+  mySize = {
+    fontSize:'10px'
+  }
+
   data: any;
   newdata:any;
+  public titleTwo:'nitesh khatri'
   public num:number=0;
   public hero:string=''
   public amount:number = 122
@@ -51,6 +60,8 @@ export class AboutComponent implements OnInit {
   public caption: string = "Click Me!";
   public fullName: string = 'Robert Junior';  
   // public randomNums:number[] = [3, 6, 7, 8, 1, 122, 44, 67, 790];
+
+  public unreadMessages = [ 'hello?', 'remember me!'];
 
   public randomNums:RandomNum[]=[
     {
@@ -131,9 +142,33 @@ export class AboutComponent implements OnInit {
   navStyle = 'font-size:1.2rem;color:cornflowerblue';
   linkStyle = 'underline'
   activeLinkStyle = 'overline';
+  public fname:string='nitesh';
+  public lname:string='khatri'
+
+  public numberarray:any[]=[
+      {
+        numarr:1
+      },
+      {
+        numarr:2
+      },
+      {
+        numarr:3
+      },
+      {
+        numarr:4
+      },
+  ]
 
   getCurrentTime():any{
     return Date.now();
+  }
+
+  getFName():string{
+    return this.fname
+  }
+  getLName(){
+    return this.lname
   }
 
   public  customers = [
@@ -313,22 +348,131 @@ export class AboutComponent implements OnInit {
    this.onSubscribeTwo();
    this.onSubscribeThree();
    this.onSubscribeFour();
+
    }
 
-   getSmartphones() {
-    this.api.getSmartphone()
-    .subscribe(resp => {
-      console.log(resp);
-      const keys = resp.headers.keys();
-      this.headers = keys.map(key =>
-        `${key}: ${resp.headers.get(key)}`);
-  
-      for (const data of resp.body) {
-        this.smartphone.push(data);
-      }
-      console.log(this.smartphone);
-    });
+   people: any[] = [
+    {
+      "name": "Douglas  Pace"
+    },
+    {
+      "name": "Mcleod  Mueller"
+    },
+    {
+      "name": "Day  Meyers"
+    },
+    {
+      "name": "Aguirre  Ellis"
+    },
+    {
+      "name": "Cook  Tyson"
+    }
+  ];
+
+
+  groupCountry:any[]=[
+    {
+      'country':'USA',
+      people:[
+        {
+          name:'A'
+        }
+      ]
+    },
+    {
+      'country':'Spain',
+      people:[
+        {
+          name:'B'
+        }
+      ]
+    },
+    {
+      'country':'Brazil',
+      people:[
+        {
+          name:'C'
+        }
+      ]
+    },
+  ]
+
+   peopleByCountry: any[] = [
+    {
+      'country': 'UK',
+      'people': [
+        {
+          "name": "Douglas  Pace"
+        },
+        {
+          "name": "Mcleod  Mueller"
+        },
+      ]
+    },
+    {
+      'country': 'US',
+      'people': [
+        {
+          "name": "Day  Meyers"
+        },
+        {
+          "name": "Aguirre  Ellis"
+        },
+        {
+          "name": "Cook  Tyson"
+        }
+      ]
+    }
+  ];
+
+   viewMode='list'
+   name:string=''
+
+   fetchData = [{"title":"saurabh","description":"dd","tagline":"tt","date":"dd"},{"title":"aman","description":"dd","tagline":"tt","date":"dd"},{"title":"jessica","description":"dd","tagline":"tt","date":"dd"},{"title":"rosh","description":"dd","tagline":"tt","date":"dd"}];
+
+  //  scope
+   btnClear(){
+    this.nameexample = '';
+   }
+
+   imageUrl:string='https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
+
+   LoginText:string="LoginText"
+  SignUpText:string="SignUpText"
+
+  example:boolean=false;
+
+  show(){
+    console.warn('this is message')
   }
+
+  logintt(){
+    console.log('this is login')
+  }
+  signup(){
+    console.log('this is signup')
+  }
+
+   getTitle():string{
+    return this.titleTwo
+   }
+
+  //  getSmartphones() {
+  //   this.api.getSmartphone()
+  //   .subscribe(resp => {
+  //     console.log(resp);
+  //     const keys = resp.headers.keys();
+  //     this.headers = keys.map(key =>
+  //       `${key}: ${resp.headers.get(key)}`);
+  
+  //     for (const data of resp.body) {
+  //       this.smartphone.push(data);
+  //     }
+  //     console.log(this.smartphone);
+  //   });
+  // }
+
+  
    reactiveForm = new FormGroup({
     firstname: new FormControl('', [Validators.required]),
     lastname: new FormControl(''),
@@ -396,6 +540,8 @@ export class AboutComponent implements OnInit {
   //   clearInterval(this.interval);
   // }
 
+  
+
 
   public team: CTeam[]=[
     {
@@ -437,8 +583,22 @@ export class AboutComponent implements OnInit {
     this.keyword = keyword;
   }
 
+  public itemsnew :any[] =[
+    {
+      name:'a',
+    },
+    {
+      name:'b',
+    },
+    {
+      name:'c',
+    },
+  ]
+
 
   ngOnInit() {
+    const max = Math.min.apply(Math,this.numberarray.map((item) => item.numarr));
+    console.log('@@@', max)
     this.parentMessage = 'this is parent compoen nt'
     console.log(this.employees);
     this.httpc.get(this.API).subscribe((res) => {
